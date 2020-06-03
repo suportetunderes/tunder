@@ -45,15 +45,83 @@ exports.run = (bot,message,args) => {
     }
     if(!args[0]) {
 
-      const embedH = new Discord.RichEmbed()
-  .setTitle(`${message.guild.name} | Help`)
-  .addField(`${config.prefix}ppt`, `Para Mais Informações Utilize \`${config.prefix}help ppt\``)
-  .addField(`${config.prefix}COMANDO-2`, `COMO FUNCIONA O COMANDO-2`)
-  .setFooter(`Comando pedido por: ${message.author.tag}`,)
-  .setTimestamp()
-  .setColor("#008aff");
-  
-        return message.channel.send(embedH);
+        const embed = new Discord.RichEmbed()
+        .setTitle("Tunder⚡ | Help")
+        .setDescription(`💻Administração - Comandos De Administração\n😀Diversão - Comando De Diversão\n⛏️Donos - Comandos Dos Donos`)
+        .setFooter(`Comando pedido por: ${message.author.tag}`,)
+        .setTimestamp()
+        .setColor("#008aff");
+        
+        const comandos = new Discord.RichEmbed()
+        .setColor("#008aff")
+        .setTitle("Tunder⚡ | Administração")
+        .setDescription(`💻Comandos De Administração`)
+        .addField(`${config.prefix}Ban (@Membro) (Motivo)`, `Para Banir Um Membro`)
+        .addField(`${config.prefix}Kick (@Membro) (Motivo)`, `Para Kickar Um Membro`)
+        .addField(`${config.prefix}limpar (Quantidade-De-Mensagens)`, `Para Apagar Mensagens`)
+        .addField(`${config.prefix}mensagem (Mensagem)`, `Para Que O Bot Envie Mensagem Que Você Queira`)
+        .addField(`${config.prefix}chat (on/off)`, `Para Deixar O Chat ON ou OFF Para Conversa`)
+        .setTimestamp();
+        
+        const bug = new Discord.RichEmbed()
+        .setColor("#008aff")
+        .setTitle("Tunder⚡ | Diversão")
+        .setDescription("😀Comandos De Diversão")
+        .addField(`${config.prefix}avatar`, `Para Pegar O Icone Do Membro`)
+        .addField(`${config.prefix}icone`, `Para Pegor O Icone Do Servidor`)
+        .addField(`${config.prefix}botinfo`, `Para Ver Informações Da Bot Tunder`)
+        .addField(`${config.prefix}userinfo`, `Para Ver Suas Informações`)
+        .addField(`${config.prefix}serverinfo`, `Parar Ver Informações Do Server`)
+        .addField(`${config.prefix}ping`, `Para Ver O Ping Do Bot`)
+        .addField(`${config.prefix}emojis`, `Para Ver Todos Os Emojis Personalizados Do Grupo`)
+        .addField(`${config.prefix}piada`, `Para Mandar Uma Piada`)
+        .setTimestamp();
+        
+        const suporte = new Discord.RichEmbed()
+        .setTitle("Tunder⚡ | Donos")
+        .setColor("#008aff")
+        .setDescription("⛏️Comandos De Donos")
+        .addField(`${config.prefix}all`, `Para Mandar Mensagem Para Todos Que O BOT Estiver`)
+        .addField(`${config.prefix}allembed`, `Para Mandar Mensagem Em Embed Para Todos Que O BOT Estiver`)
+        .addField(`${config.prefix}divulgar`, `Para Divulgar A Tunder Para Todos Que O BOT Estiver`)
+        .addField(`${config.prefix}anunciar`, `Para Fazer Um Anuncio No Grupo Da Tunder`)
+        .addField(`${config.prefix}aviso (Aviso)`, `Mandar Aviso No PV De Todos Do Grupo`)
+        .setTimestamp();
+        
+        const msg = await message.channel.send(embed);
+        
+        await msg.react("💻");
+        await msg.react("😀");
+        await msg.react("⛏️");
+        await msg.react("↩");
+      
+      let filter = (reaction, usuario) => {
+            return ['💻', '😀', '⛏️', '↩'].includes(reaction.emoji.name) && usuario.id === message.author.id;
+        }
+        
+        const colector = msg.createReactionCollector(filter, {time: 100000});
+        
+        colector.on("collect", em => {
+          switch (em.emoji.name) {
+            case "💻":
+              msg.edit(comandos); 
+              em.remove(message.author);
+              break;
+            case "😀":
+              msg.edit(bug);
+              em.remove(message.author);
+              break;
+            case "⛏️":
+              msg.edit(suporte);
+              em.remove(message.author);
+              break;
+            case "↩":
+              msg.edit(embed);
+              em.remove(message.author);
+              break;
+              
+          }
+        });
     }
 
 }
