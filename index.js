@@ -3,7 +3,9 @@ console.log("\x1b[34m", "[INFO]","\x1b[37m","Os Comandos Ira Começar A Carregar
 const Discord = require('discord.js');
 const config = require("./config.json");
 const fs = require("fs");
-
+const bot = new Discord.Client({
+  autoReconnect: true
+});
 const http = require('http');
 const express = require('express');
 const app = express();
@@ -219,4 +221,4 @@ bot.on("guildMemberRemove", member => {
   bot.channels.get("714223947213832273").setName(`🎓│Usuários: ${bot.users.size} `);
 });
 
-bot.login(config.token)
+bot.login(process.env.TOKEN)
