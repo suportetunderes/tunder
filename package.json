@@ -22,7 +22,9 @@
     "mysql": "^2.18.1",
     "number-to-words": "^1.2.4",
     "request": "^2.88.2",
-    "steam-provider": "^0.3.2"
+    "steam-provider": "^0.3.2",
+    "quick.db": "^7.1.1",
+    "parse-ms": "^2.0.0"
   },
   "devDependencies": {}
 }

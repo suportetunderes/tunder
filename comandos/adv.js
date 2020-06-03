@@ -10,17 +10,17 @@ exports.run = async (bot,message,args) => {
     if(!member)
       return message.reply("Por favor mencione um usuário válido !") 
 
-    let reason = splitarg[0];
+    let reason = splitarg[1];
     if(!reason) reason = "Nenhuma razão fornecida"
 
-    let advt = splitarg[1];
+    let advt = splitarg[2];
     if(!advt) advt = "Isso Foi So Um Aviso"
 
     let ADV = new Discord.RichEmbed()
-    .setTitle(`:x: | **__Advertência__**`)
-    .addField(":x: | **Punido** »", `\`${member.user.tag}\``)
-    .addField(":white_check_mark: | **Author** »", `\`${message.author.tag}\``)
-    .addField(":white_small_square:  | **Motivo** »", `\`${reason}\``)
+    .setTitle(`⛔ | **__Advertência__**`)
+    .addField("👤 | **Punido** »", `\`${member.user.tag}\``)
+    .addField("👑 | **Author** »", `\`${message.author.tag}\``)
+    .addField("🎫  | **Motivo** »", `\`${reason}\``)
     .addField("🔗  | **Advertência** »", `\`${advt}\``)
     
  message.channel.send(ADV)
