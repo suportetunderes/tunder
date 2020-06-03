@@ -1,35 +1,11 @@
-console.log("\x1b[34m", "[INFO]","\x1b[37m","Conectando...")
-console.log("\x1b[34m", "[INFO]","\x1b[37m","Os Comandos Ira Começar A Carregar!")
+
 const Discord = require('discord.js');
 const config = require("./config.json");
 const fs = require("fs");
 const bot = new Discord.Client();
 
-//UptimeRobot
-const http = require('http');
-const express = require('express');
-const app = express();
-app.use(express.static('public'));
-app.get("/", (request, response) => {
-response.sendStatus(200);
-});
-app.listen(process.env.PORT);
-setInterval(() => {
-http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 224000);
-//Não apagar essa linha
+module.exports = async (bot, message) => { 
 
-bot.commands = new Discord.Collection();
-bot.aliases = new Discord.Collection();
-
-["aliases", "commands"].forEach(x => bot[x] = new Collection());
-["console", "command", "event"].forEach(x => require(`./handlers/${x}`)(bot));
-
-
-bot.on("reconnecting", () => {
-  console.log("\x1b[34m", "[INFO]","\x1b[37m",'Reconectando... Reconectou!')
-})
-bot.on("ready", () => {
   console.log("\x1b[34m", "[INFO]","\x1b[37m",`Bot foi iniciado, Com`,`\x1b[34m`,`${bot.users.size}`,`\x1b[37m`,`usuários, em`,`\x1b[34m`,`${bot.channels.size}`,`\x1b[37m`,` canais, em`,`\x1b[34m`,` ${bot.guilds.size}`,`\x1b[37m`,`servidores.`)
 
   let activities = [
@@ -181,5 +157,3 @@ bot.on('raw', (packet) => {
       }
   });
 });
-
-bot.login(config.token)

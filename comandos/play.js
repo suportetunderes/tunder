@@ -63,8 +63,9 @@ exports.run = (bot,message,args) => {
             }
         }).catch(err => message.channel.send(err.message))
     }
-}
+
 
 exports.help = {
         name: "play",
         aliases: []
+}
