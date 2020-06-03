@@ -1,7 +1,7 @@
 
 const fs = require("fs");
 const Discord = require("discord.js");
-const config = require("C:/Users/g/Desktop/BOTT/config.json");
+const config = require("../config.json");
 
 exports.run = (bot,message,args) => { 
 
@@ -48,6 +48,7 @@ exports.run = (bot,message,args) => {
       const embedH = new Discord.RichEmbed()
   .setTitle(`${message.guild.name} | Help`)
   .addField(`${config.prefix}ppt`, `Para Mais Informações Utilize \`${config.prefix}help ppt\``)
+  .addField(`${config.prefix}COMANDO-2`, `COMO FUNCIONA O COMANDO-2`)
   .setFooter(`Comando pedido por: ${message.author.tag}`,)
   .setTimestamp()
   .setColor("#008aff");
