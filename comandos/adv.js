@@ -1,25 +1,22 @@
 const Discord = require("discord.js");
+const config = require("../config.json");
 
-exports.run = (bot,message,args) => { 
+exports.run = async (bot,message,args) => { 
 
     message.delete();
 
     let member = message.mentions.members.first()
     if(!member)
-      return message.reply("Por favor mencione um usuário válido !")
-    let reason = args.slice(1).join(' ')
-    if(!reason) reason = "Nenhuma razão fornecida"
-    await member.ban(reason)
+      return message.reply("Por favor mencione um usuário válido !") 
+
       .catch(error => message.reply(`Desculpe ${message.author} não consegui banir o membro devido o: ${error}`))
- 
-      message.channel.send(`${message.author}, usuário punido com sucesso!`)
 
     if(args[0] === "1") {
         let ADV1 = new Discord.RichEmbed()
         .setTitle(`:x: | **__Advertência__**`)
         .addField(":x: | **Punido** »", `\`${member.user.tag}\``)
         .addField(":white_check_mark: | **Author** »", `\`${message.author.tag}\``)
-        .addField(":white_small_square:  | **Motivo** »", `\`${reason}\``)
+        .addField(":white_small_square:  | **Motivo** »", `\`${args}\``)
         .addField("🔗  | **Advertência** »", `\`1\``)
         
      message.channel.send(ADV1)
@@ -31,7 +28,7 @@ exports.run = (bot,message,args) => {
         .setTitle(`:x: | **__Advertência__**`)
         .addField(":x: | **Punido** »", `\`${member.user.tag}\``)
         .addField(":white_check_mark: | **Author** »", `\`${message.author.tag}\``)
-        .addField(":white_small_square:  | **Motivo** »", `\`${reason}\``)
+        .addField(":white_small_square:  | **Motivo** »", `\`${args}\``)
         .addField("🔗  | **Advertência** »", `\`2\``)
         
      message.channel.send(ADV2)
@@ -43,7 +40,7 @@ exports.run = (bot,message,args) => {
         .setTitle(`:x: | **__Advertência__**`)
         .addField(":x: | **Punido** »", `\`${member.user.tag}\``)
         .addField(":white_check_mark: | **Author** »", `\`${message.author.tag}\``)
-        .addField(":white_small_square:  | **Motivo** »", `\`${reason}\``)
+        .addField(":white_small_square:  | **Motivo** »", `\`${args}\``)
         .addField("🔗  | **Advertência** »", `\`3\``)
         
      message.channel.send(ADV3)
