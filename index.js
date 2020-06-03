@@ -10,17 +10,12 @@ const http = require('http');
 const express = require('express');
 const app = express();
 app.get("/", (request, response) => {
-       console.log("bot vivo");
        response.sendStatus(200);
    });
    app.listen(process.env.PORT);
    setInterval(() => {
        http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
    }, 280000);
-
-const bot = new Discord.Client({
-  autoReconnect: true
-});
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
@@ -211,14 +206,6 @@ bot.on('raw', (packet) => {
           bot.emit('messageReactionRemove', reaction, bot.users.get(packet.d.user_id));
       }
   });
-});
-
-bot.on("guildMemberAdd", guildMember => {
-  bot.channels.get("714223947213832273").setName(`🎓│Usuários: ${bot.users.size} `);
-});
-
-bot.on("guildMemberRemove", member => {
-  bot.channels.get("714223947213832273").setName(`🎓│Usuários: ${bot.users.size} `);
 });
 
 bot.login(process.env.TOKEN)
