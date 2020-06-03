@@ -3,7 +3,7 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const config = require("../config.json");
 
-exports.run = (bot,message,args) => { 
+exports.run = async (bot,message,args) => { 
 
     const member = message.author;
     message.delete();
