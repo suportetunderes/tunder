@@ -1,18 +1,19 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
 
-exports.run = async (client, message, args, config) => {
+exports.run = async (bot, message, args, config) => {
 
   
 
     let author = db.fetch(`money_${message.author.id}`)
 
     if (args[0] == 'vip') {
+
         if (!message.guild.roles.find("name", '💎╿Vip')) return message.channel.send('Eu não encontrei o cargo VIP, por favor fale com algum Dono')
-   db.fetch(message.author.id).then(author => {
-      if(!errado >= 10000) {
+   db.fetch(message.author.id).then(errado => {
+      if(!errado < 10000) {
       message.reply('Você não tem dinheiro suficiente');
-    } else if(errado >= 10000) {
+    } else if(errado < 10000) {
 const errado = db.fetch(`money_${message.author.id}`).then(money => {
       if(money == null || money == 0) {
         db.subtract(errado, 10000);
