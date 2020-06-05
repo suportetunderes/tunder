@@ -77,6 +77,6 @@ bot.on("message", message => {
     let arquivocmd = bot.commands.get(command.slice(prefix.length));
     if (arquivocmd) arquivocmd.run(bot,message,args)
 
-  })
+  })}
 
 bot.login(config.token)
