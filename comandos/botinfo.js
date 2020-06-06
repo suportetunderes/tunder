@@ -21,9 +21,9 @@ Meu ID:
 Servidores: ${bot.guilds.size}
 Canais: ${bot.channels.size}
 Usuários: ${bot.users.size}`)
-  .addField(``,``)
-  .addField(``,``)
-  .addField(``,``)
+  .addField(`a`,`a`)
+  .addField(`a`,`a`)
+  .addField(`a`,`a`)
 
     message.channel.send(botembed);
 }
