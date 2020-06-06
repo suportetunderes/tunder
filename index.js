@@ -78,12 +78,12 @@ bot.on("message", message => {
 
 bot.on("guildMemberAdd", member => {
 
-const canalbemvindo = db.get(`canalbemvindo_${message.guild.id}`)
+const canalbemvindo = db.get(`canalbemvindo_${member.guild.id}`)
+const bemvindoembed = new Discord.RichEmbed()
+.setDescription(`Seja Bem Vindo ${member} Como Vai?`)
 
+bot.channels.get(canalbemvindo).send(bemvindoembed)
 member.addRole('714205176172380183');
-
-
-bot.channels.get(canalbemvindo).sendcanalbemvindo
 });
 
 bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
