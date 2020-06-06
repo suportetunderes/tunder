@@ -77,7 +77,13 @@ bot.on("message", message => {
   })
 
 bot.on("guildMemberAdd", member => {
+
+const canalbemvindo = db.get(`canalbemvindo_${message.guild.id}`)
+
 member.addRole('714205176172380183');
+
+
+bot.channels.get(canalbemvindo).sendcanalbemvindo
 });
 
 bot.on('messageReactionAdd', async (reaction, user) => { //atendimento

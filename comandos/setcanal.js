@@ -5,10 +5,10 @@ exports.run = (bot,message,args) => {
 
 message.delete()
 
-  if(args[0] == 'avatar') {
-const canalavatar = message.mentions.channels.first()
+  if(args[0] == 'bemvindo') {
+const canalbemvindo = message.mentions.channels.first()
     
-  db.set(`canalavatar_${message.guild.id}`, canalavatar.id)
+  db.set(`canalbemvindo_${message.guild.id}`, canalbemvindo.id)
 message.reply("setado!")
      }
 
