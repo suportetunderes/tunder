@@ -16,7 +16,7 @@ message.delete()
     .setColor("#008aff")
     .setFooter(message.author.username, message.author.displayAvatarURL)
     
-    canal.send(embed)
+    bot.channels.get(canal).send(embed)
 }
 
 
