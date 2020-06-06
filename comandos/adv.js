@@ -17,9 +17,10 @@ exports.run = async (bot,message,args) => {
     if(!advt) advt = "Isso Foi So Um Aviso"
 
     let ADV = new Discord.RichEmbed()
+    .setColor("#008aff")
     .setTitle(`⛔ | **__Advertência__**`)
-    .addField("👤 | **Punido** »", `\`${member.user.tag}\``)
-    .addField("👑 | **Author** »", `\`${message.author.tag}\``)
+    .addField("👤 | **Punido** »", `${member}`)
+    .addField("👑 | **Author** »", `${message.author}`)
     .addField("🎫  | **Motivo** »", `\`${reason}\``)
     .addField("🔗  | **Advertência** »", `\`${advt}\``)
     

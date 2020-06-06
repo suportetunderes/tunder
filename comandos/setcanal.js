@@ -14,11 +14,15 @@ const canalbemvindo = message.mentions.channels.first()
   const canalbemvindo1 = db.get(`canalbemvindo_${message.guild.id}`)
   
 message.reply(`**Canal De Bem-Vindo Setado Em**
-<:texto:718906937298911262>${canalbemvindo}`)
+<:texto:718906937298911262>Canal: ${canalbemvindo}`)
+    
+if(canalbemvindo == null)  {
+canalbemvindo = "Desativado"
+  
 }
-     }
+}
+}
 
-}
 
 
 exports.help = {

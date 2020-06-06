@@ -81,6 +81,7 @@ bot.on("guildMemberAdd", member => {
 const canalbemvindo = db.get(`canalbemvindo_${member.guild.id}`)
 const bemvindoembed = new Discord.RichEmbed()
 .setDescription(`Seja Bem Vindo ${member} Como Vai?`)
+.setColor("#008aff")
 
 bot.channels.get(canalbemvindo).send(bemvindoembed)
 member.addRole('714205176172380183');
