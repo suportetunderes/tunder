@@ -4,17 +4,12 @@ const db = require('quick.db')
 exports.run = (bot,message,args) => {
 
     message.delete()
-    const canal = message.mentions.channels.first()
-    const member = message.mentions.users.first()
 
-if(args[0] == "setcanal") {
-db.set(`canal_${message.guild.id}`, canal.id)
-}
+    const member = message.mentions.users.first() || message.author;
+    const canal = db.get(`canal_${message.guild.id}`, canal.id)
 
-if(args[0]) {
-  
     const embed = new Discord.RichEmbed()
-    .setTitle(`🎨 ${member.username}`)
+    .setTitle(`🎨 ${member}`)
     .setDescription(`Clique [aqui](${member.displayAvatarURL}) para baixar`)
     .setTimestamp()
     .setImage(member.displayAvatarURL)
@@ -23,7 +18,6 @@ if(args[0]) {
     
   
     canal.send(embed)
-}
 }
 
 
