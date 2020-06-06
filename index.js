@@ -4,6 +4,8 @@ const Discord = require('discord.js');
 const config = require("./config.json");
 const fs = require("fs");
 const bot = new Discord.Client();
+const db = require('quick.db')
+const ms = require('parse-ms')
 bot.login(config.token)
 
 //UptimeRobot
@@ -32,9 +34,6 @@ fs.readdir("./comandos/", (err, files) => {
         console.log(`☑️ |`,`\x1b[34m`,`[${f}]`,`\x1b[37m`,`Carregou Corretamente.`)
         bot.commands.set(props.help.name, props);
     });
-});
-bot.on("guildMemberAdd", member => {
-member.addRole('714205176172380183');
 });
 
 bot.on("reconnecting", () => {
@@ -76,6 +75,10 @@ bot.on("message", message => {
     if (arquivocmd) arquivocmd.run(bot,message,args)
 
   })
+
+bot.on("guildMemberAdd", member => {
+member.addRole('714205176172380183');
+});
 
 bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
   let output = Math.round(Math.random()*100)
