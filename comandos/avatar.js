@@ -3,10 +3,10 @@ const db = require('quick.db')
 
 exports.run = (bot,message,args) => {
 
-    message.delete()
+message.delete()
 
     const member = message.mentions.users.first() || message.author;
-    const canal = db.get(`canal_${message.guild.id}`, canal.id)
+    const canal = db.get(`canal_${message.guild.id}`)
 
     const embed = new Discord.RichEmbed()
     .setTitle(`🎨 ${member}`)
@@ -16,7 +16,6 @@ exports.run = (bot,message,args) => {
     .setColor("#008aff")
     .setFooter(message.author.username, message.author.displayAvatarURL)
     
-  
     canal.send(embed)
 }
 
