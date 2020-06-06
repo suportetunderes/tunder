@@ -39,13 +39,27 @@ fs.readdir(pasta, (err, files) => {
     });
 });
 
-fs.readdir("./events/", (err, files) => { 
+fs.readdir('./eventos/', (err, files) => {
+    if(err) console.error(err);
+
+    let arquivojs = files.filter(f => f.split(".").pop() == "js");
+
+    arquivojs.forEach((files, i) => {
+        let props = require(`./eventos/${files}`);
+        delete require.cache[require.resolve(`${pasta}/${files}`)]
+        bot.commands.set(props.help.name, props);
+        console.log(`\x1b[37m`,`☑️ |`,`\x1b[34m`,`[${files}]`,`\x1b[37m`,`Carregou Corretamente.`)
+        if(err) console.log(`\x1b[34m`,`✖️ |`,`\x1b[37m`,`${files}`,`\x1b[37m`,`Não Carregou Corretamente!`);
+    });
+});
+
+fs.readdir("./eventos/", (err, files) => { 
     if (err) return console.error(`[Error] > Houve um erro:\n${err}`); 
     files.forEach(file => {
-        let eventFunction = require(`./events/${file}`);
+        let eventFunction = require(`./eventos/${file}`);
         console.log(`[Evento] ${file}`);
         let eventName = file.split(".")[0]; 
-        bot.on(eventName, (...args) => eventFunction.run(bot, ...args)); 
+        bot.on(eventName, (args) => eventFunction.run(bot, args)); 
     });
 });
 
@@ -57,6 +71,20 @@ bot.on("reconnecting", () => {
 
 bot.on("guildMemberAdd", member => {
     member.addRole('714205176172380183');
+  })
+
+bot.on("message", message => {
+    if(message.author.bot) return; //não responde bot
+    if(message.channel.type == "dm") return; //não reponde dm(privado)
+    let prefix = config.prefix
+      
+    if(!message.content.startsWith(prefix)) return; //responde só ao seu prefixo
+    let messageArray = message.content.split(" ");
+    let command = messageArray[0];
+    let args = messageArray.slice(1);
+    let arquivocmd = bot.commands.get(command.slice(prefix.length));
+    if (arquivocmd) arquivocmd.run(bot,message,args)
+
   })
  
 

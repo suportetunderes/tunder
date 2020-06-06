@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require("./config.json");
+const config = require("../config.json");
 const fs = require("fs");
 const bot = new Discord.Client();
 
@@ -68,7 +68,7 @@ let filter = (reaction, usuario) => {
         break;
 
 }
-})
+});
 
 bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
   let output = Math.round(Math.random()*100)
@@ -110,13 +110,32 @@ bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
           .setColor(`#008aff`)
           .setFooter("Tunder - Sistema de Atendimento", bot.user.displayAvatarURL)
          
-         chat.send(`${user}`, msg)
+          let msgduvida = chat.send(`${user}`, msg)
 
-})
+         msgduvida.react('❌')
+
+let filter = (reaction, usuario) => {
+      return ['❌'].includes(reaction.emoji.name) && usuario.id === message.author.id;
+  }
+  
+  const colector = msg.createReactionCollector(filter, {time: 100000});
+  
+  colector.on("collect", em => {
+    switch (em.emoji.name) {
+      case "❌":
+        let embed = new Discord.RichEmbed()
+.setDescription(`O Ticket Vai Ser Deletado Em 5 Segundos!`)
+.setColor("#008aff")
  
+    message.channel.send(embed)
+ 
+      setTimeout(() => {
+          message.channel.delete()
+      }, 5000)
+        break;
+
 }
-}
-})
+});
     
   
 
@@ -137,3 +156,11 @@ bot.on('raw', (packet) => {
       }
   })
 })
+})
+        }
+      }
+    });
+ })
+};
+    }
+  })
