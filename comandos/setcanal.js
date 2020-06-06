@@ -4,11 +4,14 @@ const db = require('quick.db')
 exports.run = (bot,message,args) => {
 
 message.delete()
-  
-    const canal = message.mentions.channels.first()
+
+  if(args[0] == 'avatar') {
+const canalavatar = message.mentions.channels.first()
     
-  db.set(`canal_${message.guild.id}`, canal.id)
+  db.set(`canalavatar_${message.guild.id}`, canalavatar.id)
 message.reply("setado!")
+     }
+
 }
 
 

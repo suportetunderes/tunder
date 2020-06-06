@@ -6,7 +6,7 @@ exports.run = (bot,message,args) => {
 message.delete()
 
     const member = message.mentions.users.first() || message.author;
-    const canal = db.get(`canal_${message.guild.id}`)
+    const canalavatar = db.get(`canalavatar_${message.guild.id}`)
 
     const embed = new Discord.RichEmbed()
     .setTitle(`🎨 ${member}`)
@@ -16,7 +16,7 @@ message.delete()
     .setColor("#008aff")
     .setFooter(message.author.username, message.author.displayAvatarURL)
     
-    bot.channels.get(canal).send(embed)
+    bot.channels.get(canalavatar).send(embed)
 }
 
 
