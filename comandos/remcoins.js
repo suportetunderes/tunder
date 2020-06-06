@@ -21,11 +21,11 @@ exports.run = async (client, message, args, config) => {
     let embed = new Discord.RichEmbed()
     .setAuthor(`Trabalhar`, message.author.displayAvatarURL)
     .setColor("#008aff")
-    .setDescription(`💸 | **Renmoveu**`)
+    .setDescription(`💸 | **Removeu**`)
     .addField(`Você Removeu:`, amount)
 
     message.channel.send(embed)
-    db.push(`money_${message.author.id}`, amount)
+    db.add(`money_${message.author.id}`, amount)
     db.set(`add_${message.author.id}`, Date.now())
         
     }
