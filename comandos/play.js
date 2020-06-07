@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
 const pesquisa = require('yt-search');
  
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, ops) => {
 
   message.delete();
   

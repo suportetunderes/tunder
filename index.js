@@ -75,7 +75,7 @@ bot.on("message", message => {
     let command = messageArray[0];
     let args = messageArray.slice(1);
     let arquivocmd = bot.commands.get(command.slice(prefix.length));
-    if (arquivocmd) arquivocmd.run(bot,message,args)
+    if (arquivocmd) arquivocmd.run(bot,message,args,ops)
 
   })
 
