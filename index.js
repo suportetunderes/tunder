@@ -158,39 +158,40 @@ bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
               chat.setParent(categoria).then((perm) => {
                 chat.overwritePermissions(reaction.message.guild.roles.find(a => a.name === "@everyone"), { "READ_MESSAGES": false });
                
-              chat.overwritePermissions(reaction.message.guild.roles.find(a => a.name === "「👑」Equipe Tunder"), { "READ_MESSAGES": true });
-     
+              chat.overwritePermissions(reaction.message.guild.roles.find(a => a.name === "「👑」Equipe Tunder"), { "READ_MESSAGES": true });     
+
                 chat.overwritePermissions(user, {
      
                     "READ_MESSAGES": true, "SEND_MESSAGES": true,
                     "ATTACH_FILES": true, "CONNECT": true,
                     "CREATE_INSTANT_INVITE": false, "ADD_REACTIONS": true
-                })
-                });
-              
-          let msg = new Discord.RichEmbed()
-          .setTitle("❓│Duvida", bot.user.displayAvatarURL)
-          .setDescription(`Olá ${user}, por meio desse chat será feito o suporte por parte da staff para lhé ajudar em seu reporte\n\n**OBS:** Utilize o Comando \`.ticket finalizar\` para finalizar esse suporte.`)
-          .setThumbnail(user.displayAvatarURL)
-          .setColor(`#008aff`)
-          .setFooter("Tunder - Sistema de Atendimento", bot.user.displayAvatarURL)
-         
-         chat.send(`${user}`, msg).then(async msg => {
-msg.react("❌")
-
-
-
+})             
 })
 
+let msg = new Discord.RichEmbed()
+  .setTitle("❓│Duvida", bot.user.displayAvatarURL)
+  .setDescription(`Olá ${user}, por meio desse chat será feito o suporte por parte da staff para lhé ajudar em seu reporte\n\n**OBS:** Utilize o Comando \`.ticket finalizar\` para finalizar esse suporte.`)
+  .setThumbnail(user.displayAvatarURL)
+  .setColor(`#008aff`)
+  .setFooter("Tunder - Sistema de Atendimento", bot.user.displayAvatarURL)
+
+  chat.send(`${user}`, msg).then(async msg => {
+    msg.react("❌")
+  })
+    const filter = (reaction, user) => reaction.emoji.name === '❌' && user.id;
+const coletar = msg.createReactionCollector(filter, { timeout: 60000 })
+coletar.on('collect', r => {
+msg.channel.send("Esse ticket será deletado em 5 segundos!")
+setTimeout(() => {
+msg.channel.delete()
+}, 5000)
 })
- 
+
+});          
 }
 }
 })
 
-
-    
-  
 
 // Essa mensagem abaixo, coloque apenas uma  vez, abaixo de todos os codes de atendimento
  
