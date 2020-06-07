@@ -32,7 +32,35 @@ author: message.author
 
 if (!data.dispatcher) play(bot, ops, data);
 else {
-message.channel.send(`Adicionada a Fila ${pVideo.title}\nPedido Por: ${message.author}`)}
+message.channel.send(`Adicionada a Fila ${pVideo.title}\nPedido Por: ${message.author}`)
+}
+
+ops.active.set(message.guild.id, data);
+
+async function play() {
+let embed = new Discord.RichEmbed()
+.setDescription(`Tocando agora: ${data.fila[0].tituloMusica}\nAuthor: ${data.fila[0].author}`)
+message.channel.send(embed);
+
+data.dispatcher = await data.connection.playStream(ytdl(data.fila[0].url, {filter: 'audioonly'}));
+data.dispatcher.guildID = data.guildID;
+
+data.dispatcher.once('end', () => {
+finish(bot, ops, this)})
+};
+
+function finish(bot, ops, dispatcher) {
+let fetched = ops.active.get(dispatcher.guildID);
+
+fetched.fila.shift();
+
+if (fetched.fila.length > 1) {
+ops.active.set(dispatcher.guildID, fetched);
+play(bot, ops, fetched);
+} else {
+ops.active.delete()
+}
+};
   
 })
 };
