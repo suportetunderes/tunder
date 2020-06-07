@@ -17,7 +17,7 @@ if (erro) console.log(erro)
 const videos = re.videos;
 const pVideo = videos[0];
 
-let data = ops.active.get(message.guild.id);
+let data = ops.active.get(message.guild.id) ||{};
 if (!data.connection) data.connection = await message.member.voiceChannel.join();
 if (!data.fila) data.fila = [];
 data.guildID = message.guild.id;
@@ -54,11 +54,14 @@ let fetched = ops.active.get(dispatcher.guildID);
 
 fetched.fila.shift();
 
-if (fetched.fila.length > 1) {
+if (fetched.fila.length > 0) {
 ops.active.set(dispatcher.guildID, fetched);
 play(bot, ops, fetched);
 } else {
-ops.active.delete()
+ops.active.delete(dispatcher.guildID);
+
+let vc = bot.guild.get(dispatcher.guildID).me.voiceChannel;
+if (vc) vc.leave;
 }
 };
   
