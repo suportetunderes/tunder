@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
-const ytdl = require('ytdl-core')
-const pesquisa = require( 'yt-search' )
+const ytdl = require('ytdl-core');
+const pesquisa = require('yt-search');
  
 module.exports.run = async (bot, message, args) => {
 
@@ -16,21 +16,26 @@ pesquisa(pes, async (erro, re) => {
 if (erro) console.log(erro)
 
 const videos = re.videos;
-const pVideos = videos[0];
+const pVideo = videos[0];
 
 const con = await message.member.voiceChannel.join();
-const musica = await con.playStream(y)
+const musica = await con.playStream(ytdl(pVideo.url, {filter: 'audioonly'}));
+
+musica.on('end', () => {
+message.channel.send('A Musica Acabou!')
+message.member.voiceChannel.leave
 })
-  
-  
-  
+
 let embed = new Discord.RichEmbed()
+.setAuthor(message.author.tag, message.author.avatarURL)
 .setTitle('Tocando:')
-.addField('Música:', ``)
-.setThumbnail()
+.addField('Música:', `[${pVideo.title}](${pVideo.url})`)
+.addField('Duração:', `${pVideo.duration.timestamp}`)
+.setColor("#008aff")
 
 message.channel.send(embed);
-   
+  
+})
 };
  
 exports.help = {
