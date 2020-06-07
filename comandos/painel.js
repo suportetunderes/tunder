@@ -11,7 +11,7 @@ const statusInvite = db.get(`statusInvite_${message.guild.id}`)
    let embed = new Discord.RichEmbed()
    .setColor("#008aff")
    .setTitle(`Painel De Configuração`)
-   .addField(`**<a:entrou:714207447354441768>Modelo Entrada**`,`<:ativado:718906937168888018>**Status:** Ativo\n<:texto:718906937298911262>**Canal:** <#${canalbemvindo}>`)
+   .addField(`**<a:entrou:714207447354441768>Modelo Entrada**`,`<:ativado:718906937168888018>**Status:** Ativado\n<:texto:718906937298911262>**Canal:** <#${canalbemvindo}>`)
    .addField(`**<a:saiu:714207447371350057>Modelo Saida**`,`<:desativado:718906937139396668>**Status:** Desativado\n<:texto:718906937298911262>**Canal:** \`Sem Canal\``)
    .addField(`**Bloqueador De Convite**`, statusInvite)
 
