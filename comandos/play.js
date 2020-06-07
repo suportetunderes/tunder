@@ -23,10 +23,10 @@ if (!data.fila) data.fila = [];
 data.guildID = message.guild.id;
 
 data.fila.push({
+tempo: pVideo.duration.timestamp,
 tituloMusica: pVideo.title,
 url: pVideo.url,
 views: pVideo.views,
-tempo: pVideo.duration.timestamp,
 author: message.author
 });
 
@@ -52,7 +52,7 @@ finish(bot, ops, this)})
 function finish(bot, ops, dispatcher) {
 let fetched = ops.active.get(dispatcher.guildID);
 
-fetched.fila.shift();
+fetched.fila.shift()
 
 if (fetched.fila.length > 0) {
 ops.active.set(dispatcher.guildID, fetched);
