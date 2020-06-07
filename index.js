@@ -66,6 +66,24 @@ setInterval(() => setStatus(),3000)
 
 
 bot.on("message", message => {
+let statusInvite = db.get(`./index.js`)
+if(statusInvite == null) {
+return;
+} else {
+  const regex = /(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li|club)|discordapp\.com\/invite|discord\.com\/invite)\/.+[a-z]/gi;
+//RegEx com as expressões que normalmente tem na maioria dos links de convites e suas variantes.
+  if (regex.exec(message.content)) {
+     message.delete({timeout: 1000});
+//Se o conteúdo da mensagem for um convite, o bot apagará a mensagem após um segundo.
+      message.channel.send(
+        `${message.author} **você não pode postar link de outros servidores aqui!**`
+      );
+//Envia um aviso que ele não pode postar convites naquele chat.
+  }
+}
+  
+
+
     if(message.author.bot) return; //não responde bot
     if(message.channel.type == "dm") return; //não reponde dm(privado)
     let prefix = config.prefix
