@@ -175,7 +175,19 @@ bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
           .setColor(`#008aff`)
           .setFooter("Tunder - Sistema de Atendimento", bot.user.displayAvatarURL)
          
-         chat.send(`${user}`, msg)
+         chat.send(`${user}`, msg).then(async msg => {
+msg.react("❌")
+
+const filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+const coletar = msg.createReactionCollector(filter, { timeout: 60000 })
+coletar.on('collect', r => {
+m.send("Esse ticket será deletado em 5 segundos!")
+setTimeout(() => {
+message.channel.delete()
+}, 5000)
+})
+
+})
 
 })
  
