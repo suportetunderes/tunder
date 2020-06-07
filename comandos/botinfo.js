@@ -24,9 +24,9 @@ module.exports.run = async (bot, message, args) => {
   .addField(`<:dono:719218839874830416>__**Sobre Mim:**__`,`<a:infos:718906937349111858>Meu Prefixo: **tn.**
 <:js:719218839245553685>Linguagem: \`JavaScript\`
 <:dj:719219220541472891>Livraria: \`Discord.JS\``)
-  .addField(`<:plis:718906937873530981>__**Links úteis:**__`,`<:adicionar:718906937475072090>Convite: **(Clique Aqui)**[]
-<:bot:719219219996344322>Suporte: **(Clique Aqui)**[]
-<:sim_T:714207438408122441>Vote-Em-Mim: **(Clique Aqui)**[]`)
+  .addField(`<:plis:718906937873530981>__**Links úteis:**__`,`<:adicionar:718906937475072090>Convite: **[Clique Aqui]()**
+<:bot:719219219996344322>Suporte: **[Clique Aqui]()**
+<:sim_T:714207438408122441>Vote-Em-Mim: **[Clique Aqui]()**`)
 
 
     message.channel.send(botembed);
