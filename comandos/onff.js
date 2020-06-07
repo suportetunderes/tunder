@@ -10,7 +10,7 @@ if(args[0] == 'on-invite') {
   
 db.set(`statusInvite_${message.guild.id}`, "<:ativado:718906937168888018>**Status:** Ativo")
   
-message.reply(`**setado!**`)
+message.reply(`setado!`)
 }
     
 if(args[0] === "off-invite") {

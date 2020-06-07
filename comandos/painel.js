@@ -1,12 +1,15 @@
 const db = require('quick.db')
 const Discord = require('discord.js')
 
-exports.run = async (bot, message, args, config) => {
+exports.run = async (bot, message, args, ops) => {
 message.delete()
 
   
 const canalbemvindo = db.get(`canalbemvindo_${message.guild.id}`)
 const statusInvite = db.get(`statusInvite_${message.guild.id}`)
+if(statusInvite == null) {
+statusInvite = "<:desativado:718906937139396668>**Status:** Desativado"
+}
   
    let embed = new Discord.RichEmbed()
    .setColor("#008aff")
