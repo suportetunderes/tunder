@@ -4,7 +4,7 @@ module.exports.run = (bot, message, args) => {
 
 let embed = new Discord.RichEmbed()
 .setDescription(`O Ticket Vai Ser Deletado Em 5 Segundos!`)
-.setColor("#008aff")
+.setColor("#2F3136")
 
 if(args[0] === "finalizar") {
 

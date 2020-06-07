@@ -11,7 +11,7 @@ exports.run = (bot,message,args) => {
     .setDescription(`Clique [aqui](${avatar}) para baixar`)
     .setTimestamp()
     .setImage(avatar)
-    .setColor("#008aff")
+    .setColor("#2F3136")
     .setFooter(message.author.username, message.guild.iconURL)
 
     message.channel.send(embed)

@@ -19,7 +19,7 @@ exports.run = async (client, message, args, config) => {
     } else {
     let embed = new Discord.RichEmbed()
     .setAuthor(`Trabalhar`, message.author.displayAvatarURL)
-    .setColor("#008aff")
+    .setColor("#2F3136")
     .setDescription(`💸 | **Trabalho**`)
     .addField(`Você trabalhou e ganhou:`, amount)
 

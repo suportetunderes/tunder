@@ -19,7 +19,7 @@ exports.run = async (bot,message,args) => {
   .addField(`:bookmark: **Permissão**`, `\`NENHUMA\``)
   .setFooter(`Comando pedido por: ${message.author.tag}`,)
   .setTimestamp()
-  .setColor("#008aff");
+  .setColor("#2F3136");
 
      message.channel.send(embedPPT)
     }
@@ -50,10 +50,10 @@ exports.run = async (bot,message,args) => {
         .setDescription(`💻Administração - Comandos De Administração\n😀Diversão - Comando De Diversão\n⛏️Donos - Comandos Dos Donos`)
         .setFooter(`Comando pedido por: ${message.author.tag}`,)
         .setTimestamp()
-        .setColor("#008aff");
+        .setColor("#2F3136");
         
         const comandos = new Discord.RichEmbed()
-        .setColor("#008aff")
+        .setColor("#2F3136")
         .setTitle("Tunder⚡ | Administração")
         .setDescription(`💻Comandos De Administração`)
         .addField(`${config.prefix}Ban (@Membro) (Motivo)`, `Para Banir Um Membro`)
@@ -64,7 +64,7 @@ exports.run = async (bot,message,args) => {
         .setTimestamp();
         
         const bug = new Discord.RichEmbed()
-        .setColor("#008aff")
+        .setColor("#2F3136")
         .setTitle("Tunder⚡ | Diversão")
         .setDescription("😀Comandos De Diversão")
         .addField(`${config.prefix}avatar`, `Para Pegar O Icone Do Membro`)
@@ -79,7 +79,7 @@ exports.run = async (bot,message,args) => {
         
         const suporte = new Discord.RichEmbed()
         .setTitle("Tunder⚡ | Donos")
-        .setColor("#008aff")
+        .setColor("#2F3136")
         .setDescription("⛏️Comandos De Donos")
         .addField(`${config.prefix}all`, `Para Mandar Mensagem Para Todos Que O BOT Estiver`)
         .addField(`${config.prefix}allembed`, `Para Mandar Mensagem Em Embed Para Todos Que O BOT Estiver`)

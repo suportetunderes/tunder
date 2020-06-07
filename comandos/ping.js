@@ -9,7 +9,7 @@ exports.run = (bot,message,args) => {
 
     .setTitle(`Ping Do Bot: 
 A latência da API é **${Math.round(bot.ping)}ms**`)
-    .setColor("#008aff")
+    .setColor("#2F3136")
     .setTimestamp()
     .setFooter(`${message.guild.name}`)
 

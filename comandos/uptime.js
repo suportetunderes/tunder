@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
   const embed = new Discord.RichEmbed()
     .setTitle(`Tempo de atividade <a:relogio:714207441751113809>`)
     .setThumbnail("https://imgur.com/RPvEg6k.gif")
-    .setColor("#008aff")
+    .setColor("#2F3136")
     .setDescription(`**Estou online há:**\n${uptime}`)
 
   message.channel.send(embed);

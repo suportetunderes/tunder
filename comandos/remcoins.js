@@ -7,7 +7,7 @@ exports.run = async (client, message, args, config) => {
     if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`Você não tem permissões para usar esse comando!`).then(msg => msg.delete(15000));
 
     let timeout = 1 // 24 hours in milliseconds, change if you'd like.
-    let amount = args
+    let amount = -args
     // random amount: Math.floor(Math.random() * 1000) + 1;
 
 
@@ -20,7 +20,7 @@ exports.run = async (client, message, args, config) => {
     } else {
     let embed = new Discord.RichEmbed()
     .setAuthor(`Trabalhar`, message.author.displayAvatarURL)
-    .setColor("#008aff")
+    .setColor("#2F3136")
     .setDescription(`💸 | **Removeu**`)
     .addField(`Você Removeu:`, amount)
 

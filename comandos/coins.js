@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
   let embed = new Discord.RichEmbed()
   .setTitle("💸 | Coins")
 .setDescription(`Você possui exatamente ${money} de coins em sua conta.`)
-  .setColor("#008aff")
+  .setColor("#2F3136")
 message.channel.send(embed)
 
 }

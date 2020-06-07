@@ -13,7 +13,7 @@ message.delete()
     .setDescription(`Clique [aqui](${member.displayAvatarURL}) para baixar`)
     .setTimestamp()
     .setImage(member.displayAvatarURL)
-    .setColor("#008aff")
+    .setColor("#2F3136")
     .setFooter(message.author.username, message.author.displayAvatarURL)
     
     message.channel.send(embed)

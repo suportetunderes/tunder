@@ -11,7 +11,7 @@ exports.run = (bot,message,args) => {
         .setTitle(`Erro: Você Não Tem Permissão Para Executar Esse Comando!`)
         .setTimestamp()
         .setFooter(`${message.guild.name}`)
-        .setColor("#008aff")
+        .setColor("#2F3136")
 
         return message.reply(permissao)
     }
@@ -19,7 +19,7 @@ exports.run = (bot,message,args) => {
         let embed10 = new Discord.RichEmbed()
 
         .setTitle(`Erro: Coloque o Titulo!`)
-        .setColor("#008aff")
+        .setColor("#2F3136")
         .setTimestamp()
         .setFooter(`${message.guild.name}`)
 
@@ -29,7 +29,7 @@ exports.run = (bot,message,args) => {
     let aAnnouncement = splitarg[0];
     let embed = new Discord.RichEmbed()
     .setDescription(aAnnouncement)
-    .setColor("#008aff")
+    .setColor("#2F3136")
 
 
     message.channel.send(embed);

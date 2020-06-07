@@ -8,20 +8,20 @@ module.exports.run = async (bot, message, args) => {
     message.delete();
 
   let botembed = new Discord.RichEmbed()
-  .setColor("008aff")
+  .setColor("2F3136")
   .setTitle("**Informações - Dudinha⚡**")
   .setDescription(`Olá Minha Informações Esta Abaixo:`)
   .addField(`__**Informações pessoais:**__`,`
-Meu Nome: 
-Data De Nascimento: 6 de Junho de 2020
-Meu Criador: <@652277720688099340>
-Meu ID: 
+<:crashar:714207437854605352>Meu Nome: 
+<:papel:714207438588477501>Data De Nascimento: **6 de Junho de 2020**
+<:pessoa:714207437623787561>Meu Criador: <@652277720688099340>
+<:coroa:714207437632176259>Meu ID: 
 `)
   .addField(`__**Estatísticas:**__`,`
-Servidores: ${bot.guilds.size}
-Canais: ${bot.channels.size}
-Usuários: ${bot.users.size}`)
-  .addField(`a`,`a`)
+<:550502619345453067:718906937063768135>Servidores: **${bot.guilds.size}**
+<:canal:714207437812531212>Canais: **${bot.channels.size}**
+<:grupo:714207438210990090>Usuários: **${bot.users.size}**`)
+  .addField(`__**Sobre Mim:**__`,`a`)
   .addField(`a`,`a`)
   .addField(`a`,`a`)
 

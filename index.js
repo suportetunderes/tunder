@@ -143,7 +143,7 @@ bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
           .setTitle("💸│Compra", bot.user.displayAvatarURL)
           .setDescription(`Olá ${user}, por meio desse chat será feito o suporte por parte da staff para lhé ajudar em seu reporte\n\n**OBS:** Utilize o Comando \`.ticket finalizar\` para finalizar esse suporte.`)
           .setThumbnail(user.displayAvatarURL)
-          .setColor(`#008aff`)
+          .setColor(`#2F3136`)
           .setFooter("Tunder - Sistema de Atendimento", bot.user.displayAvatarURL)
          
          chat.send(`${user}`, msg)
@@ -191,7 +191,7 @@ let msg = new Discord.RichEmbed()
   .setTitle("❓│Duvida", bot.user.displayAvatarURL)
   .setDescription(`Olá ${user}, por meio desse chat será feito o suporte por parte da staff para lhé ajudar em seu reporte\n\n**OBS:** Utilize o Comando \`.ticket finalizar\` para finalizar esse suporte.`)
   .setThumbnail(user.displayAvatarURL)
-  .setColor(`#008aff`)
+  .setColor(`#2F3136`)
   .setFooter("Tunder - Sistema de Atendimento", bot.user.displayAvatarURL)
 
   chat.send(`${user}`, msg)
