@@ -166,8 +166,8 @@ bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
                     "ATTACH_FILES": true, "CONNECT": true,
                     "CREATE_INSTANT_INVITE": false, "ADD_REACTIONS": true
                 })
-            });
-             
+                });
+              
           let msg = new Discord.RichEmbed()
           .setTitle("❓│Duvida", bot.user.displayAvatarURL)
           .setDescription(`Olá ${user}, por meio desse chat será feito o suporte por parte da staff para lhé ajudar em seu reporte\n\n**OBS:** Utilize o Comando \`.ticket finalizar\` para finalizar esse suporte.`)
@@ -178,14 +178,7 @@ bot.on('messageReactionAdd', async (reaction, user) => { //atendimento
          chat.send(`${user}`, msg).then(async msg => {
 msg.react("❌")
 
-const filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-const coletar = msg.createReactionCollector(filter, { timeout: 60000 })
-coletar.on('collect', r => {
-m.send("Esse ticket será deletado em 5 segundos!")
-setTimeout(() => {
-message.channel.delete()
-}, 5000)
-})
+
 
 })
 
@@ -194,6 +187,8 @@ message.channel.delete()
 }
 }
 })
+
+
     
   
 
