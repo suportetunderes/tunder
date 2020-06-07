@@ -6,7 +6,10 @@ const fs = require("fs");
 const bot = new Discord.Client();
 const db = require('quick.db')
 const ms = require('parse-ms')
-bot.login(config.token)
+const active = new Map();
+let ops = {
+active: active
+};
 
 //UptimeRobot
 const http = require('http');
