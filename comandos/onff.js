@@ -16,9 +16,23 @@ message.reply(`setado!`)
 if(args[0] === "off-invite") {
 const statusInvite = db.delete(`statusInvite_${message.guild.id}`)
 message.reply(`desativado`)
-  if(statusInvite == null) {
-statusInvite = "<:desativado:718906937139396668>**Status:** Desativaodo"
-};
+}
+
+if(args[0] == 'on-bemvindo') {
+  
+db.set(`bemvindo_${message.guild.id}`, "<:ativado:718906937168888018>**Status:** Ativo")
+  
+message.reply(`setado!`)
+}
+if(args[0] == 'off-bemvindo') {
+  
+const bemvindo = db.delete(`bemvindo_${message.guild.id}`)
+const canalbemvindo = db.delete(`canalbemvindo_${message.guild.id}`)
+  
+message.reply(`setado!`)
+if(bemvindo == null) {
+bemvindo = " + Desativado + "
+}
 }
 };
 
