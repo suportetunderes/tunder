@@ -16,9 +16,9 @@ message.reply(`setado!`)
 if(args[0] === "off-invite") {
 const statusInvite = db.delete(`statusInvite_${message.guild.id}`)
 message.reply(`desativado`)
-if(statusInvite == null) {
-statusInvite = "<:desativado:718906937139396668>**Status:** Desativado"
-}
+  if(statusInvite == null) {
+statusInvite = "<:desativado:718906937139396668>**Status:** Desativaodo"
+};
 }
 };
 
