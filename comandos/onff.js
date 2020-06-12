@@ -31,7 +31,7 @@ const canalbemvindo = db.delete(`canalbemvindo_${message.guild.id}`)
   
 message.reply(`setado!`)
 if(bemvindo == null) {
-bemvindo = " + Desativado + "
+bemvindo = "Desativado"
 }
 }
 };

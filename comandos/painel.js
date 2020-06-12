@@ -9,7 +9,9 @@ const canalbemvindo = db.get(`canalbemvindo_${message.guild.id}`)
 const statusInvite = db.get(`statusInvite_${message.guild.id}`)
 const bemvindo = db.get(`bemvindo_${message.guild.id}`)
 const statusbemvindo = `<#${canalbemvindo}>`
-if(statusbemvindo == <#)
+if(statusbemvindo == null) {
+return statusbemvindo = "Sem Canal"
+}
 
    let embed = new Discord.RichEmbed()
    .setColor("#2F3136")
