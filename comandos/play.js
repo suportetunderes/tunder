@@ -1,71 +1,111 @@
 const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
-const pesquisa = require('yt-search');
+const search = require('yt-search');
  
 module.exports.run = async (bot, message, args, ops) => {
 
   message.delete();
   
-  if(!message.member.voiceChannel) return message.channel.send('entre em um canal')
+    const s = args.join(' ');
 
-let pes = args.join(" ")
-if(!pes) return message.reply('você não digitou um video valido')
+    try {
+        search(s, (err, result) => {
+            if (err) {const Discord = require("discord.js");
+const ytdl = require('ytdl-core');
+const search = require('yt-search');
+ 
+module.exports.run = async (bot, message, args, ops) => {
 
-pesquisa(pes, async (erro, re) => {
-if (erro) console.log(erro)
-
-const videos = re.videos;
-const pVideo = videos[0];
-
-let data = ops.active.get(message.guild.id) ||{};
-if (!data.connection) data.connection = await message.member.voiceChannel.join();
-if (!data.fila) data.fila = [];
-data.guildID = message.guild.id;
-
-data.fila.push({
-tempo: pVideo.duration.timestamp,
-tituloMusica: pVideo.title,
-url: pVideo.url,
-views: pVideo.views,
-author: message.author
-});
-
-if (!data.dispatcher) play(bot, ops, data);
-else {
-message.channel.send(`Adicionada a Fila ${pVideo.title}\nPedido Por: ${message.author}`)
-}
-
-ops.active.set(message.guild.id, data);
-
-async function play() {
-let embed = new Discord.RichEmbed()
-.setDescription(`Tocando agora: ${data.fila[0].tituloMusica}\nAuthor: ${data.fila[0].author}`)
-message.channel.send(embed);
-
-data.dispatcher = await data.connection.playStream(ytdl(data.fila[0].url, {filter: 'audioonly'}));
-data.dispatcher.guildID = data.guildID;
-
-data.dispatcher.once('end', () => {
-finish(bot, ops, this)})
-};
-
-function finish(bot, ops, dispatcher) {
-let fetched = ops.active.get(dispatcher.guildID);
-
-fetched.fila.shift()
-
-if (fetched.fila.length > 0) {
-ops.active.set(dispatcher.guildID, fetched);
-play(bot, ops, fetched);
-} else {
-ops.active.delete(dispatcher.guildID);
-
-let vc = bot.guild.get(dispatcher.guildID).me.voiceChannel;
-if (vc) vc.leave;
-}
-};
+  message.delete();
   
-})
+    const s = args.join(' ');
+
+    try {
+        search(s, (err, result) => {
+            if (err) {
+            throw err;
+            } else {
+                if (result && result.videos.length > 0) {
+                    const song = result.videos[0];
+                    console.log(song);
+                    playSong(bot, message, song);
+                }
+            }
+        });
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+const playSong = (bot, message, song) => {
+    if (!song) {
+    }
+
+    if (!message.member.voice.channel) {
+        return message.reply(
+            'Vuxe prexisa exta in um canal di voz para tocar uma musiquinha'
+        );
+    }
+    let queue = bot.queues.get(message.member.guild.id);
+
+    if (!queue) {
+        const conn = message.member.voice.channel.join();
+        queue = {
+            volume: 10,
+            connection: conn,
+            dispatcher: null,
+            songs: [song]
+        };
+        queue.dispatcher = queue.connection.play(ytdl(song.url), {    type: 'opus'
+        });
+ console.log(queue)
+        bot.queues.set(message.member.guild.id, queue);
+    }
+};
+ 
+exports.help = {
+    name: "play",
+  aliases: []
+}
+
+            throw err;
+            } else {
+                if (result && result.videos.length > 0) {
+                    const song = result.videos[0];
+                    console.log(song);
+                    playSong(bot, msg, song);
+                }
+            }
+        });
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+const playSong = (bot, msg, song) => {
+    if (!song) {
+    }
+
+    if (!msg.member.voice.channel) {
+        return msg.reply(
+            'Vuxe prexisa exta in um canal di voz para tocar uma musiquinha'
+        );
+    }
+    let queue = bot.queues.get(msg.member.guild.id);
+
+    if (!queue) {
+        const conn = msg.member.voice.channel.join();
+        queue = {
+            volume: 10,
+            connection: conn,
+            dispatcher: null,
+            songs: [song]
+        };
+        queue.dispatcher = queue.connection.play(ytdl(song.url), {    type: 'opus'
+        });
+ console.log(queue)
+        bot.queues.set(msg.member.guild.id, queue);
+    }
 };
  
 exports.help = {
