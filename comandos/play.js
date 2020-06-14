@@ -23,6 +23,8 @@ data.guildID = message.guild.id;
 data.fila.push({
 tituloMusica: info.videoDetails.title,
 author: message.author,
+views: info.views,
+timestamp: info.duration.timestamp,
 url: args[0]
 });
 
@@ -32,6 +34,8 @@ let embed2 = new Discord.RichEmbed()
 .setDescription(`**Adicionada a Fila:**`)
 .addField(`__**Musica**__`, `[${info.videoDetails.title}](${args[0]})`)
 .addField(`__**Pedida Por:**__`, `${message.author}`)
+.addField(`__**Tempo:**__`, `${info.duration.timestamp}`)
+.addField(`__**Visualizações:**__`, `${info.views}`)
 message.channel.send(embed2);
 
 }
@@ -41,7 +45,11 @@ ops.active.set(message.guild.id, data);
 
 async function play() {
 let embed = new Discord.RichEmbed()
-.setDescription(`**Tocando agora:**\n\n[${data.fila[0].tituloMusica}](${data.fila[0].url})\nAuthor: ${data.fila[0].author}`)
+.setDescription(`**Tocando agora:**`)
+.addField(`__**Musica**__`, `[${data.fila[0].tituloMusica}](${data.fila[0].url})`)
+.addField(`__**Pedida Por:**__`, `${data.fila[0].author}`)
+.addField(`__**Tempo:**__`, `${data.fila[0].timestamp}`)
+.addField(`__**Visualizações:**__`, `${data.fila[0].views}`)
 message.channel.send(embed);
 
 data.dispatcher = await data.connection.playStream(ytdl(data.fila[0].url, {filter: "audioonly"}));
